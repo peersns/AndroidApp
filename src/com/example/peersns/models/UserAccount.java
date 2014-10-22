@@ -1,22 +1,24 @@
 package com.example.peersns.models;
 
-public class UserAccount {
+import com.parse.ParseObject;
+
+public class UserAccount extends ParseObject{
 	//private String username;
-	private String id;
+//	private String id;
+//	
+//	private String firstName;
+//	private String lastName;
+//	private String email;
+//	private String password;
+//	private Integer zip;
+//	private String city;
+//	//Optional params
+//	private Integer phone;
+//	private String address;
+//	private String state;
+//	private String country;
 	
-	private String firstName;
-	private String lastName;
-	private String email;
-	private String password;
-	private Integer zip;
-	private String city;
-	//Optional params
-	private Integer phone;
-	private String address;
-	private String state;
-	private String country;
-	
-	public UserAccount(String firstName, String lastName, String email, String password, Integer zip,
+	private UserAccount(String firstName, String lastName, String email, String password, Integer zip,
 			String city, Integer phone, String address, String state,
 			String country) {
 		//generate id
@@ -25,62 +27,68 @@ public class UserAccount {
 		setEmail(email);
 		setPassword(password);
 		setZip(zip);
-		setCity(city);
-		setPhone(phone);
-		setAddress(address);
-		setState(address);
-		setCountry(country);
+		//optional
+//		setCity(city);
+//		setPhone(phone);
+//		setAddress(address);
+//		setState(address);
+//		setCountry(country);
 		// TODO Auto-generated constructor stub
 	}
 
 	public void setFirstName(String firstName) {
 		//Add validation
-		this.firstName = firstName;
+		//this.firstName = firstName;
+		put("firstname",firstName);
 	}
 
 	public void setLastName(String lastName) {
 		//Add validation
-		this.lastName = lastName;
+		//this.lastName = lastName;
+		put("lastName",lastName);
 	}
 	public void setEmail(String email) {
 		//Add validation
-		this.email = email;
+		//this.email = email;
+		put("email",email);
 	}
 
 	public void setPassword(String password) {
 		//Add validation
-		this.password = password;
+		//this.password = password;
+		put("password",password);
 	}
 
 	public void setZip(Integer zip) {
 		//Add validation
-		this.zip = zip;
+		//this.zip = zip;
+		put("zip",zip);
 	}
-
-	public void setCity(String city) {
-		//Add validation
-		this.city = city;
-	}
-
-	public void setPhone(Integer phone) {
-		//Add validation
-		this.phone = phone;
-	}
-
-	public void setAddress(String address) {
-		//Add validation
-		this.address = address;
-	}
-
-	public void setState(String state) {
-		//Add validation
-		this.state = state;
-	}
-
-	public void setCountry(String country) {
-		//Add validation
-		this.country = country;
-	}
+//
+//	public void setCity(String city) {
+//		//Add validation
+//		this.city = city;
+//	}
+//
+//	public void setPhone(Integer phone) {
+//		//Add validation
+//		this.phone = phone;
+//	}
+//
+//	public void setAddress(String address) {
+//		//Add validation
+//		this.address = address;
+//	}
+//
+//	public void setState(String state) {
+//		//Add validation
+//		this.state = state;
+//	}
+//
+//	public void setCountry(String country) {
+//		//Add validation
+//		this.country = country;
+//	}
 	
 	public String getLastName() {
 		return lastName;

@@ -12,64 +12,51 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import com.parse.Parse;
+import com.parse.ParseAnalytics;
+import com.parse.ParseObject;
 
 public class AccountCreationActivity extends Activity {
 	private Button _createAccountButton;
 	private SharedPreferences dataStore;
-    private OnClickListener __createAccountButtonListener;
+    private OnClickListener _createAccountButtonListener;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		dataStore = getSharedPreferences("peersns", MODE_PRIVATE);
+		//store this in preferences
+//Parse.initialize here
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		accountCreation();
 	}
 	
 	public void accountCreation() {
-		_createAccountButton = (Button) findViewById(R.id.btn_login);
-		UserAccount userAccount;
-		__createAccountButtonListener = new View.OnClickListener() {
+		_createAccountButton = (Button) findViewById(R.id.btn_create_account);
+		//UserAccount userAccount;
+
+		_createAccountButtonListener = new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				try {
-					EditText username = (EditText) findViewById(R.id.fld_username);
-					
-					userAccount.UserAccountBuilder.setFirstName((EditText) findViewById(R.id.fld_firstName))
-												  .setLastName((EditText) findViewById(R.id.fld_lastName))
-												  .setEmail((EditText) findViewById(R.id.fld_lastName))
+
 				} catch (InvalidParamException ipe) {
 					//Take appropriate action
 				}
-				String usernameValue;
-				String passwordValue;
-				//Extract Username and password based on the view id
-				EditText username = (EditText) findViewById(R.id.fld_username);
-				if (username != null) {
-					usernameValue = username.getText().toString();
-				} else {
-					//throw exception
-				}
-
-				EditText password = (EditText) findViewById(R.id.fld_pwd);
-				if (password != null) {
-					passwordValue = password.getText().toString();
-				} else {
-					//throw exception
-				}
-
+				
 				// Save the username and password into the shared preference
 				//SharedPreferences prefs = getSharedPreferences("peersns", MODE_PRIVATE);
 				Editor editor = dataStore.edit();
+				
 				editor.putString("username", usernameValue);
 				editor.putString("password", passwordValue);
 				editor.commit();
-				Log.d("Peersns", "username caught - " + dataStore.getString("username", null));
-				Log.d("Peersns", "password caught - " + dataStore.getString("password", null));
+
 
 				startNextActivity();
 			}
 		};
-		_loginButton.setOnClickListener(_loginClickListener);
+		_createAccountButton.setOnClickListener(_createAccountButtonListener);
 	}
 
 	private void startNextActivity() {
@@ -87,18 +74,21 @@ public class AccountCreationActivity extends Activity {
 	}
 	
 	private void createAccount() {
+		//EditText username = (EditText) findViewById(R.id.fld_username);
+		
 		UserAccount userAccount = new UserAccount.UserAccountBuilder()
-		          .setFirstName(((EditText) findViewById(R.id.fld_firstName)).getText().toString())
-		          .setLastName(((EditText) findViewById(R.id.fld_lastName)).getText().toString())
-		          .setEmail(((EditText) findViewById(R.id.fld_email)).getText().toString())
-		          .setPassword(((EditText) findViewById(R.id.fld_ password)).getText().toString())
-		          .setZip(new Integer(((EditText) findViewById(R.id.fld_zip)).getText().toString()))
-		          .setCity(((EditText) findViewById(R.id.fld_city)).getText().toString())
-		          .setPhone(new Integer(((EditText) findViewById(R.id.fld_phone)).getText().toString()))
-		          .setAddress(((EditText) findViewById(R.id.fld_address)).getText().toString())
-		          .setState(((EditText) findViewById(R.id.fld_state)).getText().toString())
-		          .setCountry(((EditText) findViewById(R.id.fld_country)).getText().toString())
-		          .build();
+          .setFirstName(((EditText) findViewById(R.id.fld_firstName)).getText().toString())
+          .setLastName(((EditText) findViewById(R.id.fld_lastName)).getText().toString())
+          .setEmail(((EditText) findViewById(R.id.fld_email)).getText().toString())
+          .setPassword(((EditText) findViewById(R.id.fld_password)).getText().toString())
+          .setZip(new Integer(((EditText) findViewById(R.id.fld_zip)).getText().toString()))
+        //  .setCity(((EditText) findViewById(R.id.fld_city)).getText().toString())
+        //  .setPhone(new Integer(((EditText) findViewById(R.id.fld_phone)).getText().toString()))
+        //  .setAddress(((EditText) findViewById(R.id.fld_address)).getText().toString())
+        //  .setState(((EditText) findViewById(R.id.fld_state)).getText().toString())
+        //  .setCountry(((EditText) findViewById(R.id.fld_country)).getText().toString())
+          .build();								  //.setEmail((EditText) findViewById(R.id.fld_lastName))
+		userAccount.saveInBackground();
 
 	}
 }

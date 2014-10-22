@@ -1,8 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Peersns</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="menu_settings">Settings</string>
-
+    <string name="lbl_firstname">firstname</string>
+    <string name="lbl_lastname">lastname</string>
+    <string name="lbl_email">email</string>
+    <string name="lbl_password">password</string>
+    <string name="lbl_zip">zip</string>
+    <string name="lbl_city">city</string>
+    <string name="lbl_phone">phone</string>
+    <string name="lbl_address">address</string>
+    <string name="lbl_state">state</string>
+    <string name="lbl_country">country</string>
+    
+    <string name="lbl_enter_firstname">Enter firstname</string>
+    <string name="lbl_enter_lastname">Enter lastname</string>
+    <string name="lbl_enter_email">Enter email</string>
+    <string name="lbl_enter_password">Enter password</string>
+    <string name="lbl_enter_zip">Enter zip</string>
+    <string name="lbl_enter_city">Enter city</string>
+    <string name="lbl_enter_phone">Enter phone</string>
+    <string name="lbl_enter_address">Enter address</string>
+    <string name="lbl_enter_state">Enter state</string>
+    <string name="lbl_enter_country">Enter country</string>
+    
+        <string name="lbl_create_account">Create Account</string>
+    
+    
 </resources>
